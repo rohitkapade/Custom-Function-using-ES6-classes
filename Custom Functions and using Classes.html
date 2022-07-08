@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #stack1{
+        border: 1px solid black;
+        height: auto;
+        width: 300px;
+
+        text-align: center;
+        
+    }
+</style>
+<body>
+    <form action="" onsubmit="putInStack(event)">
+        <input type="text" id="array">
+        <input type="submit" value="Create Array">
+    </form>
+   <button id="push" onclick="pushing(event)">Push()</button>
+   <button id="show" onclick="showArray(event)">Show array</button>
+   <button id="pop" onclick="popele(event)">Pop()</button>
+   <button id="peek" onclick="peekele(event)">Peek()</button>
+   <button  onclick="reverseArray(event) ">Reverse Array</button>
+   <button onclick="clearOutput(event)">Clear Output</button>
+   <button onclick="ReduceArr(event)">Reduce()</button>
+   <button onclick="size(event)">Size</button>
+
+
+
+
+   <div id="stack1"></div>
+</body>
+</html>
+<script>
+
+
+
+
+class Stack {
+    constructor(){
+        this.stack = []
+        this.length = 0
+
+    }
+
+    mypush(ele){
+       
+        // arr.forEach((ele)=>{
+           
+            let index = this.length;
+            this.stack[index]=ele;
+            this.length++  
+        // })
+        // return (this.stack)
+
+    }
+
+    mypop(){
+        
+        let index = this.stack.length-1
+        let popele = this.stack[index]
+        let num = delete this.stack[index]
+        this.stack.length--
+        this.length--
+        return popele
+        
+    }
+
+    mypeek(){
+      
+        return (this.stack[this.length-1])
+        // return this[this.length - 1];
+    }
+
+    myreduce(){
+        let sum = 0
+        for (let i=0; i<this.stack.length; i++){
+            sum = sum + this.stack[i]
+        }
+        return sum
+    }
+
+  
+}
+
+
+
+// console.log(stack)
+
+// p1.mypush(10)
+// p1.mypush(15)
+// // p1.pop()
+// p1.mypush(99)
+// p1.peek()
+// p1.pop()
+// p1.peek()
+// let nu =p1.mypeek()
+// console.log(nu)
+
+// let nu =p1.mypop()
+// console.log(nu)
+let container_output = document.getElementById("stack1")
+// let stack = document.createElement("div")
+// stack.setAttribute("class","stack1")
+// document.querySelector("body").append(stack)
+
+var p1 = new Stack()
+let stack = p1.stack
+
+function putInStack(event){
+    event.preventDefault()
+
+   
+
+    let form = document.querySelector("form")
+    let inpu = form.array.value
+    let arr1 = inpu.split(",").map(Number)
+    
+  if (inpu.length==0){
+    alert ("Input Needed")
+  }
+  else{
+
+    let form = document.querySelector("form")
+    let inpu = form.array.value
+    let arr1 = inpu.split(",").map(Number)
+
+    let making = arr1.filter(function(ele){
+        return ele!==","
+    })
+    // console.log(making)
+    while(stack.length!==0){
+        p1.mypop()
+    }
+
+    for (let i=0; i<making.length;i++){
+        p1.mypush(making[i])
+    }
+   
+
+    let newDiv = document.createElement("div")
+
+    newDiv.append(`Array created :  [${p1.stack}]`)
+    container_output.append(newDiv)
+   localStorage.setItem("arr",JSON.stringify(arr1))
+   document.getElementById("array").value=null
+  }
+    
+
+}
+
+
+function pushing(e){
+    e.preventDefault()
+    
+    let storedArray = JSON.parse(localStorage.getItem("arr"))
+
+   let inpu1 = document.querySelector("#array").value
+   let inpu2 = document.querySelector("#array").value
+   let singleEle =  inpu2.trim().split(",").map(Number)
+   
+   if(singleEle.length>1){
+    alert("Enter single element")
+   }
+   else if (inpu1==""){
+    alert ("Empty value cannot be pushed")
+   }
+   else{
+    let num = +inpu1
+    let pushed =  p1.mypush(num)
+    console.log(storedArray)
+  
+
+    let newDiv = document.createElement("div")
+    newDiv.append(`Element pushed :  ${num}`)
+    container_output.append(newDiv)
+    document.querySelector("#array").value=null
+    localStorage.setItem("arr",JSON.stringify(p1.stack))
+   }
+  
+}
+
+function showArray(e){
+    e.preventDefault()
+    let storedArray = JSON.parse(localStorage.getItem("arr"))
+    let newDiv = document.createElement("div")
+    newDiv.append(`Array :  [${storedArray}]`)
+    container_output.append(newDiv)
+}
+
+
+function popele(e){
+    e.preventDefault()
+    let storedArray = JSON.parse(localStorage.getItem("arr"))
+   if (p1.length==0){
+    alert ("No element to remove")
+   }
+   else{
+    let num = p1.mypop()
+    let newDiv = document.createElement("div")
+    newDiv.append(`Poped element :  ${num}`)
+    container_output.append(newDiv)
+    localStorage.setItem("arr",JSON.stringify(p1.stack))
+   }
+    
+   
+}
+
+function peekele(e){
+    e.preventDefault()
+    let storedArray = JSON.parse(localStorage.getItem("arr"))
+   
+    let num = p1.mypeek()
+    console.log(p1)
+    console.log(storedArray)
+
+    let newDiv = document.createElement("div")
+    newDiv.append(`Peek element :  ${num}`)
+    container_output.append(newDiv)
+    // localStorage.setItem("arr",JSON.stringify(storedArray))
+}
+
+
+function reverseArray(e){
+    e.preventDefault()
+
+    let storedArray = JSON.parse(localStorage.getItem("arr"))
+
+    let reverse = []
+    for (let i=storedArray.length-1; i>=0; i-- ){ 
+            reverse.push(storedArray[i])
+    }
+
+    let newDiv = document.createElement("div")
+    newDiv.append(`Reverse Array :  [${reverse}]`)
+    container_output.append(newDiv)
+}
+
+function clearOutput(e){
+    e.preventDefault()
+    let storedArray = JSON.parse(localStorage.getItem("arr"))
+    container_output.innerHTML=null
+    while(stack.length!==0){
+        storedArray.mypop()
+    }
+    localStorage.setItem("arr",JSON.stringify(storedArray))
+}
+
+
+function ReduceArr(event){
+    let storedArray = JSON.parse(localStorage.getItem("arr"))
+  
+    let res = p1.myreduce()
+
+    let newDiv = document.createElement("div")
+    newDiv.append(`Reduced to :  ${res}`)
+    container_output.append(newDiv)
+
+}
+
+function size(e){
+    e.preventDefault()
+    let storedArray = JSON.parse(localStorage.getItem("arr"))
+    let res = storedArray.length
+    let newDiv = document.createElement("div")
+    newDiv.append(`Size :  ${res}`)
+    container_output.append(newDiv)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

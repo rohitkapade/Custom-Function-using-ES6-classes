@@ -28,12 +28,12 @@ The project was built to strengthn the ES-6 classes of javascript which was intr
 
 
 <h2>Homepage</h2>
-<img src="" alt="">
+<img src="https://user-images.githubusercontent.com/101393249/192559693-0c003fa9-1336-422a-a75d-4c74f7dd8a1f.png" alt="">
 
 
 
 <h2>After some operations</h2>
-<img src="" alt="">
+<img src="https://user-images.githubusercontent.com/101393249/192559673-71c07f5a-1c05-4a23-9b1b-76fe76f41f39.png" alt="">
 
 
 

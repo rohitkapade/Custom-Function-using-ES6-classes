@@ -11,20 +11,19 @@ The project was built to strengthn the ES-6 classes of javascript which was intr
 
 <h2>Tools</h2>
 <li>VS code</li>
-<li>API website</li>
 <li>Github</li>
 
 
 <h2>Functionalities</h2>
-<li>Video search</li>
-<li>Video play</li>
-<li>Homepage recommendation by country </li>
+<li>Push</li>
+<li>Pop</li>
+<li>Reduce</li>
 
 
 <h2>Concepts</h2>
 <li>Document Object Model(DOM)</li>
-<li>Debouncing</li>
-<li>API fetch</li>
+<li>Customized functions</li>
+<li>ES6-javascript</li>
 <li>Closure</li>
 
 

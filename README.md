@@ -1,5 +1,5 @@
 # Custom-Function-using-ES6-classes
-The project was built to strengthn the ES-6 classes of javascript which was introduced in 2015. The project has visual implementation of stack data structure. All the function used in project such as push, pop are custom functions i.e explicitely created without using inbuilt functions.
+The project was built to strengthn the ES-6 classes of javascript which was introduced in 2015. The project has visual representation of stack data structure. All the function used in project such as push, pop are custom functions i.e explicitely created without using inbuilt functions.
 
 
 
